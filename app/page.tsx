@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import WalletGenerator from "@/components/WalletGenerator";
+import WalletGenerator from "@/components/mainDisplay";
 
 export default function Home() {
   return (
