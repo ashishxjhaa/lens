@@ -6,12 +6,12 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 
 export default function Navbar() {
   return (
-    <nav className="fixed max-w-5xl w-[90%] md:w-full h-fit mx-auto top-4 z-50 flex items-center justify-between place-self-center flex-wrap gap-2 px-4 py-2 sm:py-3 mt-4 rounded-xl bg-teal-50/10 shadow-lg shadow-neutral-600/5 backdrop-blur-md">
-      <Link href={"/"} className="flex items-center gap-2 cursor-pointer">
-        <span className="inline-flex items-center gap-2 text-green-200/80 font-bold rounded-lg uppercase tracking-widest shadow-2xl text-xs sm:text-sm p-2">
-          <Image src="/icon.svg" alt="SaveVideo" width={16} height={16} />
+    <nav className="fixed inset-x-0 top-4 z-50 mx-auto flex w-[90%] max-w-5xl flex-wrap items-center justify-between gap-2 rounded-xl bg-teal-50/10 px-4 py-2 shadow-lg shadow-neutral-600/5 backdrop-blur-md sm:py-3">
+      <Link href="/" className="flex cursor-pointer items-center gap-2">
+        <span className="inline-flex items-center gap-2 rounded-lg p-2 text-xs font-bold uppercase tracking-widest text-green-200/80 sm:text-sm">
+          <Image src="/icon.svg" alt="Lens" width={16} height={16} />
           <svg
-            className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-teal-300"
+            className="h-3 w-3 text-teal-300 sm:h-4 sm:w-4 md:h-5 md:w-5"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -20,21 +20,22 @@ export default function Navbar() {
           Lens
         </span>
       </Link>
-
       <div className="flex gap-8">
         <Link
           href="https://github.com/ashishxjhaa/lens"
           target="_blank"
-          className="opacity-70 flex items-center gap-2 mx-4 relative group transition-opacity hover:opacity-100"
+          className="group relative mx-4 flex items-center gap-2 opacity-70 transition-opacity hover:opacity-100"
         >
-          <span className="flex items-center font-bold gap-2 transition-transform duration-500 ease-in-out group-hover:-translate-x-2">
+          <span className="flex items-center gap-2 font-bold transition-transform duration-500 ease-in-out group-hover:-translate-x-2">
             <FaGithub />
-            <div>GitHub</div>
+            <div className="text-xs sm:text-sm font-bold uppercase tracking-widest">
+              GitHub
+            </div>
           </span>
           <IconArrowUpRight
             size={48}
             strokeWidth={1}
-            className="absolute h-5.5 -right-8 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+            className="absolute -right-8 h-5.5 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
           />
         </Link>
         <ModeToggle />
