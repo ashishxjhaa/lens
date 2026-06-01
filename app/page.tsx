@@ -1,16 +1,11 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import Navbar from "@/components/Navbar";
+import WalletGenerator from "@/components/WalletGenerator";
 
 export default function Home() {
   return (
-    <div>
-      <Button onClick={showToast}>Click to show toast</Button>
-    </div>
+    <main className="max-w-5xl mx-auto flex flex-col min-h-screen">
+      <Navbar />
+      {/*<WalletGenerator />*/}
+    </main>
   );
-}
-
-function showToast() {
-  toast.error("Failed to something");
 }
