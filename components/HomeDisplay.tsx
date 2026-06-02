@@ -57,13 +57,18 @@ export default function HomeDisplay() {
 
   return (
     <>
-      <MnemonicDisplay mnemonic={mnemonic} />
       {mnemonic === "" ? (
-        <Button className="py-4.5 px-3.5" onClick={handleGenerate}>
-          Generate Wallet
-        </Button>
+        <div className="min-h-[65vh] pt-20">
+          <div className="text-3xl font-medium tracking-tight pb-6">
+            Lens supports solana blockchain
+          </div>
+          <Button className="py-4.5 px-3.5" onClick={handleGenerate}>
+            Generate Wallet
+          </Button>
+        </div>
       ) : (
         <>
+          <MnemonicDisplay mnemonic={mnemonic} />
           <div className="flex items-center justify-between pb-6">
             <h2 className="text-3xl font-bold tracking-tight">
               Solana Wallets

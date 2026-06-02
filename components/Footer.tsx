@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="w-full mt-20 mb-8">
+    <div className="w-full my-8">
       <div className="border-t border-gray-600 mask-[linear-gradient(to_right,transparent,black,transparent)]" />
       <div className="px-4">
         <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent mb-8" />
