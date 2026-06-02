@@ -3,7 +3,8 @@ import { generateMnemonicfn, generateWallet } from "@/function/Wallet";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import MnemonicDisplay from "./MnemonicDisplay";
-import Walletcard from "./WalletCard";
+import { Grid2X2, List } from "lucide-react";
+import WalletCard from "./WalletCard";
 
 interface Wallet {
   publicKey: string;
@@ -15,6 +16,7 @@ export default function HomeDisplay() {
   const [mounted, setMounted] = useState(false);
   const [mnemonic, setMnemonic] = useState("");
   const [wallets, setWallets] = useState<Wallet[]>([]);
+  const [gridView, setGridView] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("mnemonic");
@@ -55,36 +57,45 @@ export default function HomeDisplay() {
 
   return (
     <>
-      <div className="flex flex-col gap-2 py-5">
-        <div className="text-2xl md:text-3xl md:font-medium">
-          Secret Seed Phrase
-        </div>
-        <div className="opacity-80">save these words in a safe place.</div>
-      </div>
       <MnemonicDisplay mnemonic={mnemonic} />
       {mnemonic === "" ? (
         <Button className="py-4.5 px-3.5" onClick={handleGenerate}>
           Generate Wallet
         </Button>
       ) : (
-        <div className="flex flex-col gap-6">
-          <div className="flex gap-3">
-            <Button className="py-4.5 px-3.5" onClick={handleAddWallet}>
-              Add Wallet
-            </Button>
-            <Button
-              className="py-4.5 px-3.5"
-              variant="destructive"
-              onClick={handleClear}
-            >
-              Clear Wallet
-            </Button>
+        <>
+          <div className="flex items-center justify-between pb-6">
+            <h2 className="text-3xl font-bold tracking-tight">
+              Solana Wallets
+            </h2>
+            <div className="flex gap-2">
+              <Button variant="ghost" onClick={() => setGridView(!gridView)}>
+                {gridView ? (
+                  <List className="size-4" />
+                ) : (
+                  <Grid2X2 className="size-4" />
+                )}
+              </Button>
+              <Button className="py-4.5 px-3.5" onClick={handleAddWallet}>
+                Add Wallet
+              </Button>
+              <Button
+                className="py-4.5 px-3.5"
+                variant="destructive"
+                onClick={handleClear}
+              >
+                Clear Wallet
+              </Button>
+            </div>
           </div>
-
-          {wallets.map((wallet) => (
-            <Walletcard key={wallet.index} wallet={wallet} />
-          ))}
-        </div>
+          <div
+            className={`grid gap-6 ${gridView ? "md:grid-cols-2" : "grid-cols-1"}`}
+          >
+            {wallets.map((wallet) => (
+              <WalletCard key={wallet.index} wallet={wallet} />
+            ))}
+          </div>
+        </>
       )}
     </>
   );
